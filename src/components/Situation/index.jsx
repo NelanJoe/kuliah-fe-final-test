@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./Global.styles.scss";
 import data from "../../utils/constant/indonesia";
 
-const Global = () => {
+const Situation = ({ title }) => {
   const [globals, setGlobals] = useState(data.indonesia);
 
   const renderedCard = globals.map((global, index) => {
@@ -27,7 +27,7 @@ const Global = () => {
   return (
     <section>
       <div className="global">
-        <h1 className="global__title">Global</h1>
+        <h1 className="global__title">{title || ""} Situation</h1>
         <p className="global__subtitle">Data Covid Berdasarkan Global</p>
         <div className="global__container">{renderedCard}</div>
       </div>
@@ -35,4 +35,4 @@ const Global = () => {
   );
 };
 
-export default Global;
+export default Situation;
