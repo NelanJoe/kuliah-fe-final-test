@@ -1,37 +1,30 @@
-import { useState } from "react";
-import "./Global.styles.scss";
-import data from "../../utils/constant/indonesia";
+import StyledSituation from "./StyledSituation";
 
-const Situation = ({ title }) => {
-  const [globals, setGlobals] = useState(data.indonesia);
-
-  const renderedCard = globals.map((global, index) => {
-    let totalStyle = "";
-
-    if (global.status === "Positif") {
-      totalStyle += "card__subtitle--postitive";
-    } else if (global.status === "Sembuh") {
-      totalStyle += "card__subtitle--recovered";
+const Situation = ({ title, situations }) => {
+  const renderedCard = situations?.map((situation, idx) => {
+    let textColor = "";
+    if (situation.status === "confirmed") {
+      textColor += "primary";
+    } else if (situation.status === "recovered") {
+      textColor += "secondary";
     } else {
-      totalStyle += "card__subtitle--death";
+      textColor += "danger";
     }
 
     return (
-      <div className="card" key={index}>
-        <h3 className="card__title">{global.status}</h3>
-        <p className={totalStyle}>{global.total}</p>
+      <div className="card" key={idx}>
+        <h1>{situation.status}</h1>
+        <h2 className={textColor}>{situation.total}</h2>
       </div>
     );
   });
 
   return (
-    <section>
-      <div className="global">
-        <h1 className="global__title">{title || ""} Situation</h1>
-        <p className="global__subtitle">Data Covid Berdasarkan Global</p>
-        <div className="global__container">{renderedCard}</div>
-      </div>
-    </section>
+    <StyledSituation>
+      <h1 className="title">{title || ""}</h1>
+      <p className="subtitle">Data Covid Berdasarkan Global</p>
+      <div className="container">{renderedCard}</div>
+    </StyledSituation>
   );
 };
 

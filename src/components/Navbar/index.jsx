@@ -1,4 +1,3 @@
-import "./Navbar.styles.scss";
 import { Link } from "react-router-dom";
 import StyledNavbar from "./StyledNavbar";
 

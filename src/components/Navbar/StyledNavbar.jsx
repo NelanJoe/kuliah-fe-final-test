@@ -36,8 +36,8 @@ const StyledNavbar = styled.header`
       gap: 1.2rem;
     }
 
-    a:hover {
-      border-bottom: 1.4px solid $color-white;
+    div > a:hover {
+      border-bottom: 1.4px solid ${({ theme }) => theme.colors.white};
     }
   }
 `;

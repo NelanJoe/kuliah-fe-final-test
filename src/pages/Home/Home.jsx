@@ -1,21 +1,23 @@
-import { useState } from "react";
 import Situation from "../../components/Situation";
 import Hero from "../../components/Hero/Hero";
-import Navbar from "../../components/Navbar";
-import Province from "../../components/Province/Province";
-import data from "../../utils/constant/provinces";
-import Form from "../../components/Form/Form";
 import Layout from "../../components/Layout";
+import Regions from "../../components/Regions";
+
+import useSWR from "swr";
 
 const Home = () => {
-  const [provinces, setProvinces] = useState(data.provinces);
+  const { data, error, isLoading } = useSWR(
+    "https://covid-fe-2023.vercel.app/api/global.json"
+  );
+
+  if (error) <div>Error fetching data</div>;
+  if (isLoading) <div>Loading...</div>;
 
   return (
     <Layout>
       <Hero />
-      <Situation title="Global" />
-      <Province provinces={provinces} />
-      <Form provinces={provinces} setProvinces={setProvinces} />
+      <Situation title="Global Situation" situations={data?.global} />
+      <Regions />
     </Layout>
   );
 };

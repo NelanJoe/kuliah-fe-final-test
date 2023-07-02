@@ -19,14 +19,18 @@ const Province = ({ provinces }) => {
               </tr>
             </thead>
             <tbody>
-              {provinces.map((province, index) => (
+              {provinces?.map((province, index) => (
                 <tr key={index}>
                   <td>{(index += 1)}</td>
-                  <td className="city">{province.kota}</td>
-                  <td>{province.kasus}</td>
-                  <td>{province.sembuh}</td>
-                  <td>{province.meninggal}</td>
-                  <td>{province.dirawat}</td>
+                  <td className="city">{province?.name || province?.kota}</td>
+                  <td>
+                    {province?.numbers?.confirmed +
+                      province?.numbers?.recovered +
+                      province?.numbers?.death || province?.kasus}
+                  </td>
+                  <td>{province?.numbers?.confirmed || province?.dirawat}</td>
+                  <td>{province?.numbers?.recovered || province?.sembuh}</td>
+                  <td>{province?.numbers?.death || province?.meninggal}</td>
                 </tr>
               ))}
             </tbody>

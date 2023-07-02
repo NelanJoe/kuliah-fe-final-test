@@ -50,6 +50,10 @@ const StyledFooter = styled.footer`
         margin: 0;
       }
     }
+
+    .actions > a:hover {
+      border-bottom: 1.4px solid ${({ theme }) => theme.colors.white};
+    }
   }
 `;
 

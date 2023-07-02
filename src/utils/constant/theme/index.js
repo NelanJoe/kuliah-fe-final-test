@@ -7,8 +7,13 @@ const theme = {
     slateGray: "#64748B",
     white: "#ffffff",
   },
-  fontSizes: [12, 14, 16, 18, 20],
-  fonts: ["poppins"]
+  fontSizes: {
+    xl: `3.052rem`,
+    lg: `2.441rem`,
+    md: `1.953rem`,
+    sm: `1.563rem`,
+    xs: `1rem`,
+  },
 };
 
 export default theme;
