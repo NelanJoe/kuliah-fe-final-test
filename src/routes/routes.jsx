@@ -10,15 +10,15 @@ const router = createBrowserRouter([
     element: <App />,
   },
   {
-    path: "/indonesia",
+    path: "indonesia",
     element: <IndonesianPage />,
   },
   {
-    path: "/provinsi",
+    path: "provinsi",
     element: <ProvincePage />,
   },
   {
-    path: "/about",
+    path: "about",
     element: <AboutPage />,
   },
 ]);
