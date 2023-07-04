@@ -12,8 +12,8 @@ export const provincesSlice = createSlice({
 
       const findIndex = state.value.findIndex((prov) => prov.kota === province);
 
-      state.value[findIndex].kasus = jumlah;
-      state.value[findIndex][covidCase] = jumlah;
+      state.value[findIndex].kasus += parseInt(jumlah);
+      state.value[findIndex][covidCase] += parseInt(jumlah);
     },
   },
 });

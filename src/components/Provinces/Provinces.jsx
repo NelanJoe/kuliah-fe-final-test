@@ -31,9 +31,9 @@ const Provinces = ({ provinces }) => {
                     <td>{(index += 1)}</td>
                     <td className="city">{province?.name || province?.kota}</td>
                     <td>{totalCase || province?.kasus}</td>
-                    <td>{confirmed || province?.dirawat}</td>
                     <td>{recovered || province?.sembuh}</td>
                     <td>{death || province?.meninggal}</td>
+                    <td>{confirmed || province?.dirawat}</td>
                   </tr>
                 );
               })}
