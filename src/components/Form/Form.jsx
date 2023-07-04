@@ -4,7 +4,7 @@ import formImage from "../../assets/img/form.png";
 import { StyledForm } from "./StyledForm";
 
 import { useSelector, useDispatch } from "react-redux";
-import { addDataCovid } from "../../features/provinces/provincesSlice";
+import { updateDataCovid } from "../../features/provinces/provincesSlice";
 
 const Form = () => {
   const provinces = useSelector((state) => state?.provinces?.value);
@@ -50,29 +50,31 @@ const Form = () => {
   };
 
   const updatedDataCovid = () => {
-    const findIndex = provinces.findIndex((prov) => prov.kota === province);
-
     if (status === "sembuh") {
-      provinces[findIndex] = {
-        ...provinces[findIndex],
-        kasus: jumlah,
-        sembuh: jumlah,
-      };
+      dispatch(
+        updateDataCovid({
+          province: province,
+          kasus: status,
+          jumlah: jumlah,
+        })
+      );
     } else if (status === "meninggal") {
-      provinces[findIndex] = {
-        ...provinces[findIndex],
-        kasus: jumlah,
-        meninggal: jumlah,
-      };
+      dispatch(
+        updateDataCovid({
+          province: province,
+          kasus: status,
+          jumlah: jumlah,
+        })
+      );
     } else {
-      provinces[findIndex] = {
-        ...provinces[findIndex],
-        kasus: jumlah,
-        dirawat: jumlah,
-      };
+      dispatch(
+        updateDataCovid({
+          province: province,
+          kasus: status,
+          jumlah: jumlah,
+        })
+      );
     }
-
-    dispatch(addDataCovid([...provinces]));
   };
 
   const handleSubmit = (e) => {

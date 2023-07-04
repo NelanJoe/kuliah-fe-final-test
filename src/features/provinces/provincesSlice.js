@@ -7,22 +7,16 @@ export const provincesSlice = createSlice({
     value: data.provinces,
   },
   reducers: {
-    addDataCovid: (state, action) => {
-      const findIndex = state.value(
-        (prov) => prov.kota === action.payload.kota
-      );
+    updateDataCovid: (state, action) => {
+      const { kasus: covidCase, province, jumlah } = action.payload;
 
-      state.value[findIndex] = {
-        ...state.value[findIndex],
-        [action.payload.case]: jumlah,
-      };
+      const findIndex = state.value.findIndex((prov) => prov.kota === province);
 
-      return {
-        ...state.value,
-      };
+      state.value[findIndex].kasus = jumlah;
+      state.value[findIndex][covidCase] = jumlah;
     },
   },
 });
 
-export const { addDataCovid } = provincesSlice.actions;
+export const { updateDataCovid } = provincesSlice.actions;
 export default provincesSlice.reducer;
