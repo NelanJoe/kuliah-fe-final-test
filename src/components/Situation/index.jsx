@@ -14,7 +14,7 @@ const Situation = ({ title, situations }) => {
     return (
       <div className="card" key={idx}>
         <h1>{situation.status}</h1>
-        <h2 className={textColor}>{situation.total}</h2>
+        <h2 className={textColor}>{situation.total.toLocaleString("id-ID")}</h2>
       </div>
     );
   });

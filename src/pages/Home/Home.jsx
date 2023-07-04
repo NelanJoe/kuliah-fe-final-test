@@ -4,11 +4,10 @@ import Layout from "../../components/Layout";
 import Regions from "../../components/Regions";
 
 import useSWR from "swr";
+import { ENDPOINTS } from "../../utils/constant/endpoints";
 
 const Home = () => {
-  const { data, error, isLoading } = useSWR(
-    "https://covid-fe-2023.vercel.app/api/global.json"
-  );
+  const { data, error, isLoading } = useSWR(ENDPOINTS.global);
 
   if (error) <div>Error fetching data</div>;
   if (isLoading) <div>Loading...</div>;

@@ -46,6 +46,14 @@ const StyledHero = styled.div`
     margin-top: 1.8rem;
     padding: 1rem;
 
+    .hero__left {
+      flex-basis: 50%;
+    }
+
+    .hero__right {
+      flex-basis: 50%;
+    }
+
     .hero__left .description {
       text-align: justify;
     }

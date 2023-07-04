@@ -35,17 +35,20 @@ const StyledRegion = styled.div`
     color: ${({ theme }) => theme.colors.slateGray};
   }
 
-  .situations-confirmed {
+  .situations-confirmed,
+  .situations-icon-confirmed {
     font-size: 25px;
     color: ${({ theme }) => theme.colors.primary};
   }
 
-  .situations-recovered {
+  .situations-recovered,
+  .situations-icon-recovered {
     font-size: 25px;
     color: ${({ theme }) => theme.colors.secondary};
   }
 
-  .situations-death {
+  .situations-death,
+  .situations-icon-death {
     font-size: 25px;
     color: ${({ theme }) => theme.colors.danger};
   }

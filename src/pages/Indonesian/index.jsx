@@ -1,24 +1,25 @@
 import Hero from "../../components/Hero/Hero";
 import Layout from "../../components/Layout";
-import Province from "../../components/Province/Province";
-import Form from "../../components/Form/Form";
 import Situation from "../../components/Situation";
 
 import useSWR from "swr";
+import { ENDPOINTS } from "../../utils/constant/endpoints";
+import Provinces from "../../components/Provinces/Provinces";
 
 const IndonesianPage = () => {
-  const {
-    data: situations,
-    error,
-    isLoading,
-  } = useSWR("https://covid-fe-2023.vercel.app/api/indonesia.json");
+  const { data: situations, error, isLoading } = useSWR(ENDPOINTS.indonesian);
 
-  const { data: provinces } = useSWR(
-    "https://covid-fe-2023.vercel.app/api/indonesia.json"
-  );
+  const {
+    data: provinces,
+    error: errorGetProvinces,
+    isLoading: LoadingPageProvinces,
+  } = useSWR(ENDPOINTS.indonesian);
 
   if (error) <div>Error fetching data</div>;
+  if (errorGetProvinces) <div>Error fetching data</div>;
+
   if (isLoading) <div>Loading...</div>;
+  if (LoadingPageProvinces) <div>Loading...</div>;
 
   return (
     <Layout>
@@ -27,7 +28,7 @@ const IndonesianPage = () => {
         title="Indonesia Situation"
         situations={situations?.indonesia}
       />
-      <Province provinces={provinces?.regions} />
+      <Provinces provinces={provinces?.regions} />
     </Layout>
   );
 };

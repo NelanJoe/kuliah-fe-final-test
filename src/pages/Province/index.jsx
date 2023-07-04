@@ -1,19 +1,19 @@
-import { useState } from "react";
 import Hero from "../../components/Hero/Hero";
 import Layout from "../../components/Layout";
 
-import data from "../../utils/constant/provinces";
-import Province from "../../components/Province/Province";
 import Form from "../../components/Form/Form";
+import Provinces from "../../components/Provinces/Provinces";
+
+import { useSelector } from "react-redux";
 
 const ProvincePage = () => {
-  const [provinces, setProvinces] = useState(data.provinces);
+  const provinces = useSelector((state) => state?.provinces?.value);
 
   return (
     <Layout>
       <Hero />
-      <Province provinces={provinces} />
-      <Form provinces={provinces} setProvinces={setProvinces} />
+      <Provinces provinces={provinces} />
+      <Form />
     </Layout>
   );
 };

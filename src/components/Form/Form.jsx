@@ -1,9 +1,16 @@
 import { useState } from "react";
-import "./Form.styles.scss";
 import Alert from "../Alert/Alert";
 import formImage from "../../assets/img/form.png";
+import { StyledForm } from "./StyledForm";
 
-const Form = ({ provinces, setProvinces }) => {
+import { useSelector, useDispatch } from "react-redux";
+import { addDataCovid } from "../../features/provinces/provincesSlice";
+
+const Form = () => {
+  const provinces = useSelector((state) => state?.provinces?.value);
+
+  const dispatch = useDispatch();
+
   const [province, setProvince] = useState("");
   const [status, setStatus] = useState("");
   const [jumlah, setJumlah] = useState(0);
@@ -44,6 +51,7 @@ const Form = ({ provinces, setProvinces }) => {
 
   const updatedDataCovid = () => {
     const findIndex = provinces.findIndex((prov) => prov.kota === province);
+
     if (status === "sembuh") {
       provinces[findIndex] = {
         ...provinces[findIndex],
@@ -63,7 +71,8 @@ const Form = ({ provinces, setProvinces }) => {
         dirawat: jumlah,
       };
     }
-    setProvinces([...provinces]);
+
+    dispatch(addDataCovid([...provinces]));
   };
 
   const handleSubmit = (e) => {
@@ -83,13 +92,13 @@ const Form = ({ provinces, setProvinces }) => {
   };
 
   return (
-    <section className="form">
+    <StyledForm>
       <div className="form__left">
         <img src={formImage} alt="form-image" className="form__image" />
       </div>
       <div className="form__right">
         <div>
-          <h2 className="form__title">Form Covid</h2>
+          <h2>Form Covid</h2>
         </div>
         <form onSubmit={handleSubmit}>
           <div className="form__group">
@@ -101,9 +110,9 @@ const Form = ({ provinces, setProvinces }) => {
               onChange={handleProvince}
             >
               <option>Pilih Provinsi</option>
-              {provinces.map((province, index) => (
-                <option key={index} value={province.kota}>
-                  {province.kota}
+              {provinces?.map((province, index) => (
+                <option key={index} value={province?.kota}>
+                  {province?.kota}
                 </option>
               ))}
             </select>
@@ -140,7 +149,7 @@ const Form = ({ provinces, setProvinces }) => {
           <button className="form__btn">Submit</button>
         </form>
       </div>
-    </section>
+    </StyledForm>
   );
 };
 

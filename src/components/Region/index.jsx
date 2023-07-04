@@ -1,4 +1,5 @@
 import StyledRegion from "./StyledRegion.jsx";
+import { PiGhostBold, PiFaceMaskDuotone, PiSmileyBold } from "react-icons/pi";
 
 const Region = ({ region }) => {
   return (
@@ -8,25 +9,35 @@ const Region = ({ region }) => {
         <div className="situations">
           <div>
             <p className="situations-title">Confirmed</p>
-            <p className="situations-confirmed">{region?.numbers?.confirmed}</p>
+            <p className="situations-confirmed">
+              {region?.numbers?.confirmed.toLocaleString("id-ID")}
+            </p>
           </div>
-          {/* icon here */}
-          <p>10</p>
+          <p className="situations-icon-confirmed">
+            <PiFaceMaskDuotone />
+          </p>
         </div>
         <div className="situations">
           <div>
             <p className="situations-title">Recovered</p>
-            <p className="situations-recovered">{region?.numbers?.recovered}</p>
+            <p className="situations-recovered">
+              {region?.numbers?.recovered.toLocaleString("id-ID")}
+            </p>
           </div>
-          {/* icon here */}
-          <p>10</p>
+          <p className="situations-icon-recovered">
+            <PiSmileyBold />
+          </p>
         </div>
         <div className="situations">
           <div>
             <p className="situations-title">Death</p>
-            <p className="situations-death">{region?.numbers?.death}</p>
+            <p className="situations-death">
+              {region?.numbers?.death.toLocaleString("id-ID")}
+            </p>
           </div>
-          <p>10</p>
+          <p className="situations-icon-death">
+            <PiGhostBold />
+          </p>
         </div>
       </div>
     </StyledRegion>
