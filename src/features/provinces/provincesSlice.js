@@ -8,7 +8,7 @@ export const provincesSlice = createSlice({
   },
   reducers: {
     updateDataCovid: (state, action) => {
-      const { kasus: covidCase, province, jumlah } = action.payload;
+      const { covidCase, province, jumlah } = action.payload;
 
       const findIndex = state.value.findIndex((prov) => prov.kota === province);
 

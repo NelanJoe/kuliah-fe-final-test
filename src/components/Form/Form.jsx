@@ -54,7 +54,7 @@ const Form = () => {
       dispatch(
         updateDataCovid({
           province: province,
-          kasus: status,
+          covidCase: status,
           jumlah: jumlah,
         })
       );
@@ -62,7 +62,7 @@ const Form = () => {
       dispatch(
         updateDataCovid({
           province: province,
-          kasus: status,
+          covidCase: status,
           jumlah: jumlah,
         })
       );
@@ -70,7 +70,7 @@ const Form = () => {
       dispatch(
         updateDataCovid({
           province: province,
-          kasus: status,
+          covidCase: status,
           jumlah: jumlah,
         })
       );
