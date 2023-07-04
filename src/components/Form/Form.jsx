@@ -92,7 +92,7 @@ const Form = () => {
       updatedDataCovid();
     }
 
-    toast.success("Success add new data covid");
+    toast.success("Success!");
 
     e.target.reset();
   };
