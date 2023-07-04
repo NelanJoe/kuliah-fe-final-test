@@ -12,6 +12,8 @@ import { Provider } from "react-redux";
 import { SWRConfig } from "swr";
 import axios from "axios";
 
+import { Toaster } from "react-hot-toast";
+
 // Configuration fetcher for used global config
 const fetcher = async (url) => await axios.get(url).then((res) => res.data);
 
@@ -24,6 +26,7 @@ root.render(
       <GlobalStyled />
       <SWRConfig value={{ fetcher }}>
         <RouterProvider router={router} />
+        <Toaster position="top-right" />
       </SWRConfig>
     </Theme>
   </Provider>

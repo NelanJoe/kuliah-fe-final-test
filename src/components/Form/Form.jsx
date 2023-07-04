@@ -6,6 +6,8 @@ import { StyledForm } from "./StyledForm";
 import { useSelector, useDispatch } from "react-redux";
 import { updateDataCovid } from "../../features/provinces/provincesSlice";
 
+import toast from "react-hot-toast";
+
 const Form = () => {
   const provinces = useSelector((state) => state?.provinces?.value);
 
@@ -89,6 +91,8 @@ const Form = () => {
     } else {
       updatedDataCovid();
     }
+
+    toast.success("Success add new data covid");
 
     e.target.reset();
   };
