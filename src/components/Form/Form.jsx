@@ -1,11 +1,12 @@
 import { useState } from "react";
-import Alert from "../Alert/Alert";
+
 import formImage from "../../assets/img/form.png";
 import { StyledForm } from "./StyledForm";
 
 import { useSelector, useDispatch } from "react-redux";
 import { updateDataCovid } from "../../features/provinces/provincesSlice";
 
+import Alert from "../ui/Alert";
 import toast from "react-hot-toast";
 
 const Form = () => {
@@ -13,13 +14,17 @@ const Form = () => {
 
   const dispatch = useDispatch();
 
-  const [province, setProvince] = useState("");
-  const [status, setStatus] = useState("");
-  const [jumlah, setJumlah] = useState(0);
+  const [formValue, setFormValue] = useState({
+    province: "",
+    status: "",
+    jumlah: 0,
+  });
 
-  const [isErrorProvince, setIsErrorProvince] = useState(false);
-  const [isErrorStatus, setIsErrorStatus] = useState(false);
-  const [isErrorJumlah, setIsErrorJumlah] = useState(false);
+  const [isError, setIsError] = useState({
+    province: false,
+    status: false,
+    jumlah: false,
+  });
 
   const optionsStatus = [
     {
@@ -36,67 +41,50 @@ const Form = () => {
     },
   ];
 
-  const handleProvince = (e) => {
-    const { value } = e.target;
-    setProvince(value);
-  };
+  const { province, status, jumlah } = formValue;
 
-  const handleStatus = (e) => {
-    const { value } = e.target;
-    setStatus(value);
-  };
+  const handleChange = (e) => {
+    const { value, name } = e.target;
 
-  const handleJumlah = (e) => {
-    const { value } = e.target;
-    setJumlah(value);
+    setFormValue({ ...formValue, [name]: value });
   };
 
   const updatedDataCovid = () => {
-    if (status === "sembuh") {
-      dispatch(
-        updateDataCovid({
-          province: province,
-          covidCase: status,
-          jumlah: jumlah,
-        })
-      );
-    } else if (status === "meninggal") {
-      dispatch(
-        updateDataCovid({
-          province: province,
-          covidCase: status,
-          jumlah: jumlah,
-        })
-      );
-    } else {
-      dispatch(
-        updateDataCovid({
-          province: province,
-          covidCase: status,
-          jumlah: jumlah,
-        })
-      );
-    }
+    dispatch(
+      updateDataCovid({
+        province: province,
+        covidCase: status,
+        jumlah: jumlah,
+      })
+    );
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (province === "") {
-      setIsErrorProvince(true);
+      setIsError({
+        province: true,
+      });
     } else if (status === "") {
-      setIsErrorStatus(true);
+      setIsError({
+        status: true,
+      });
     } else if (jumlah === 0) {
-      setIsErrorJumlah(true);
+      setIsError({
+        jumlah: true,
+      });
     } else {
       updatedDataCovid();
+
+      toast.success("Success!");
+
+      setFormValue({
+        province: "",
+        status: "",
+        jumlah: 0,
+      });
     }
-
-    toast.success("Success!");
-
-    setProvince("");
-    setStatus("");
-    setJumlah(0);
   };
 
   return (
@@ -112,10 +100,10 @@ const Form = () => {
           <div className="form__group">
             <label htmlFor="provinsi">Provinsi</label>
             <select
-              name="provinsi"
+              name="province"
               id="provinsi"
               value={province}
-              onChange={handleProvince}
+              onChange={handleChange}
             >
               <option>Pilih Provinsi</option>
               {provinces?.map((province, index) => (
@@ -124,7 +112,9 @@ const Form = () => {
                 </option>
               ))}
             </select>
-            {isErrorProvince && <Alert>Data Provinsi tidak boleh kosong</Alert>}
+            {isError.province && (
+              <Alert>Data Provinsi tidak boleh kosong</Alert>
+            )}
           </div>
           <div className="form__group">
             <label htmlFor="status">Status</label>
@@ -132,7 +122,7 @@ const Form = () => {
               name="status"
               id="status"
               value={status}
-              onChange={handleStatus}
+              onChange={handleChange}
             >
               <option>Pilih Status</option>
               {optionsStatus.map((option, id) => (
@@ -141,7 +131,7 @@ const Form = () => {
                 </option>
               ))}
             </select>
-            {isErrorStatus && <Alert>Status tidak boleh kosong</Alert>}
+            {isError.status && <Alert>Status tidak boleh kosong</Alert>}
           </div>
           <div className="form__group">
             <label htmlFor="jumlah">Jumlah</label>
@@ -150,9 +140,9 @@ const Form = () => {
               name="jumlah"
               type="number"
               value={jumlah}
-              onChange={handleJumlah}
+              onChange={handleChange}
             />
-            {isErrorJumlah && <Alert>Jumlah tidak boleh kosong</Alert>}
+            {isError.jumlah && <Alert>Jumlah tidak boleh kosong</Alert>}
           </div>
           <button className="form__btn">Submit</button>
         </form>
