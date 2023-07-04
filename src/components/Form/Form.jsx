@@ -94,7 +94,9 @@ const Form = () => {
 
     toast.success("Success!");
 
-    e.target.reset();
+    setProvince("");
+    setStatus("");
+    setJumlah(0);
   };
 
   return (
