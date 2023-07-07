@@ -17,7 +17,7 @@ const Regions = () => {
     <StyledRegions>
       <Heading
         as={"h1"}
-        color={"primary"}
+        $color={"primary"}
         $fontSize={"62px"}
         $textAlign={"center"}
         $mb={"0.4rem"}
@@ -25,7 +25,7 @@ const Regions = () => {
         Situation by Regions
       </Heading>
       <Title
-        color={"secondary"}
+        $color={"secondary"}
         $fontSize={"24px"}
         $textAlign={"center"}
         $mb={"1.1rem"}

@@ -3,7 +3,7 @@ import { styled } from "styled-components";
 const Title = styled.p`
   font-size: ${({ $fontSize }) => $fontSize};
   font-weight: ${({ $fontWeight }) => $fontWeight};
-  color: ${({ theme, color }) => theme.colors[color]};
+  color: ${({ theme, color }) => theme.colors[$color]};
   text-align: ${({ $textAlign }) => $textAlign};
 
   margin: ${({ $m, $my, $mx }) =>

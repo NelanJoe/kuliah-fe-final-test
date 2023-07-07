@@ -9,13 +9,13 @@ const Hero = () => {
       <div className="hero__left">
         <Heading
           as={"h1"}
-          color={"primary"}
+          $color={"primary"}
           $fontSize={"62px"}
           $fontWeight={700}
         >
           Covid ID
         </Heading>
-        <Title color={"secondary"} $mb={`1.2rem`}>
+        <Title $color={"secondary"} $mb={`1.2rem`}>
           Monitoring Perkembangan Wabah Covid
         </Title>
         <Title $mb={"1.2rem"}>
