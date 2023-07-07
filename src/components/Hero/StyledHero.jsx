@@ -8,16 +8,10 @@ const StyledHero = styled.div`
   text-align: center;
   margin-top: 1.2rem;
 
-  .hero__left .title {
-    font-size: 61px;
-    font-weight: 700;
-    color: ${({ theme }) => theme.colors.primary};
-  }
-
-  .hero__left .subtitle {
+  /* .hero__left .subtitle {
     color: ${({ theme }) => theme.colors.secondary};
     margin-bottom: 1.2rem;
-  }
+  } */
 
   .hero__left .description {
     color: $color-gray;
@@ -41,6 +35,7 @@ const StyledHero = styled.div`
 
   @media only screen and (min-width: 768px) {
     flex-direction: row;
+    justify-content: space-between;
     align-items: center;
     text-align: left;
     margin-top: 1.8rem;
