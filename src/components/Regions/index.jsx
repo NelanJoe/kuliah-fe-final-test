@@ -1,6 +1,6 @@
 import Region from "../Region";
 import Heading from "../ui/Heading";
-import Title from "../ui/Title";
+import Text from "../ui/Text";
 import StyledRegions from "./StyledRegions";
 
 import useSWR from "swr";
@@ -24,14 +24,14 @@ const Regions = () => {
       >
         Situation by Regions
       </Heading>
-      <Title
+      <Text
         $color={"secondary"}
         $fontSize={"24px"}
         $textAlign={"center"}
         $mb={"1.1rem"}
       >
         Bacaan Pilihan Covid
-      </Title>
+      </Text>
       <div className="container">
         {data?.regions?.map((region, idx) => (
           <Region key={idx} region={region} />

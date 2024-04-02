@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 
 const Heading = styled.h1`
-  font-size: ${({ $fontSize }) => $fontSize};
+  font-size: ${({ $fontSize }) => `${$fontSize}`};
   font-weight: ${({ $fontWeight }) => $fontWeight};
   color: ${({ theme, $color }) => theme.colors[$color]};
   text-align: ${({ $textAlign }) => $textAlign};
@@ -10,6 +10,10 @@ const Heading = styled.h1`
     `${$m}` && (`${$my} 0 ${$my} 0` || `0 ${$mx} 0 ${$my}`)};
   margin-top: ${({ $mt }) => $mt || 0};
   margin-bottom: ${({ $mb }) => $mb || 0};
+
+  @media only screen and(min-width: 768px) {
+    font-size: ${({ $fontSize }) => $fontSize};
+  }
 `;
 
 export default Heading;

@@ -16,10 +16,6 @@ const StyledRegions = styled.div`
       flex-direction: row;
       flex-wrap: wrap;
     }
-
-    .title {
-      font-size: 62px;
-    }
   }
 `;
 

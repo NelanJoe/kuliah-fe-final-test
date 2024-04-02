@@ -1,46 +1,63 @@
-import StyledRegion from "./StyledRegion.jsx";
 import { PiGhostBold, PiFaceMaskDuotone, PiSmileyBold } from "react-icons/pi";
+import Heading from "../ui/Heading";
+import Text from "../ui/Text";
+import Card from "../ui/Card";
+import Flex from "../ui/Flex";
 
 const Region = ({ region }) => {
   return (
-    <StyledRegion>
-      <div className="card">
-        <h2>{region?.name}</h2>
-        <div className="situations">
+    <>
+      <Card $width={"350px"} $p={"1.2rem"}>
+        <Heading $fontSize={"26px"} $textAlign={"center"} $mb={"1rem"}>
+          {region?.name}
+        </Heading>
+        <Flex
+          $mb={"0.5rem"}
+          $justifyContent={"space-between"}
+          $alignItems={"center"}
+        >
           <div>
-            <p className="situations-title">Confirmed</p>
-            <p className="situations-confirmed">
+            <Text $color={"slateGray"}>Confirmed</Text>
+            <Text $color={"primary"} $fontSize={"25px"}>
               {region?.numbers?.confirmed.toLocaleString("id-ID")}
-            </p>
+            </Text>
           </div>
-          <p className="situations-icon-confirmed">
+          <Text $color={"primary"} $fontSize={"25px"}>
             <PiFaceMaskDuotone />
-          </p>
-        </div>
-        <div className="situations">
+          </Text>
+        </Flex>
+        <Flex
+          $mb={"0.5rem"}
+          $justifyContent={"space-between"}
+          $alignItems={"center"}
+        >
           <div>
-            <p className="situations-title">Recovered</p>
-            <p className="situations-recovered">
+            <Text $color={"slateGray"}>Recovered</Text>
+            <Text $color={"secondary"} $fontSize={"25px"}>
               {region?.numbers?.recovered.toLocaleString("id-ID")}
-            </p>
+            </Text>
           </div>
-          <p className="situations-icon-recovered">
+          <Text $color={"secondary"} $fontSize={"25px"}>
             <PiSmileyBold />
-          </p>
-        </div>
-        <div className="situations">
+          </Text>
+        </Flex>
+        <Flex
+          $my={"1.2rem"}
+          $justifyContent={"space-between"}
+          $alignItems={"center"}
+        >
           <div>
-            <p className="situations-title">Death</p>
-            <p className="situations-death">
+            <Text $color={"slateGray"}>Death</Text>
+            <Text $color={"danger"} $fontSize={"25px"}>
               {region?.numbers?.death.toLocaleString("id-ID")}
-            </p>
+            </Text>
           </div>
-          <p className="situations-icon-death">
+          <Text $color={"danger"} $fontSize={"25px"}>
             <PiGhostBold />
-          </p>
-        </div>
-      </div>
-    </StyledRegion>
+          </Text>
+        </Flex>
+      </Card>
+    </>
   );
 };
 

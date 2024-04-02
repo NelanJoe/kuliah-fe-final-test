@@ -1,6 +1,6 @@
 import heroImg from "../../assets/img/hero.png";
 import Heading from "../ui/Heading";
-import Title from "../ui/Title";
+import Text from "../ui/Text";
 import StyledHero from "./StyledHero";
 
 const Hero = () => {
@@ -15,13 +15,13 @@ const Hero = () => {
         >
           Covid ID
         </Heading>
-        <Title $color={"secondary"} $mb={`1.2rem`}>
+        <Text $color={"secondary"} $mb={`1.2rem`}>
           Monitoring Perkembangan Wabah Covid
-        </Title>
-        <Title $mb={"1.2rem"}>
+        </Text>
+        <Text $mb={"1.2rem"}>
           Situs website COVID ID dibuat sebagai sarana informasi untuk
           mengatahui data terupdate wabah COVID 19!
-        </Title>
+        </Text>
         <button className="btn">Vaccine</button>
       </div>
       <div className="hero__right">

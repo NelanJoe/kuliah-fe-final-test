@@ -1,4 +1,7 @@
 import StyledSituation from "./StyledSituation";
+import Heading from "../ui/Heading";
+import Text from "../ui/Text";
+import Flex from "../ui/Flex";
 
 const Situation = ({ title, situations }) => {
   const renderedCard = situations?.map((situation, idx) => {
@@ -21,9 +24,20 @@ const Situation = ({ title, situations }) => {
 
   return (
     <StyledSituation>
-      <h1 className="title">{title || ""}</h1>
-      <p className="subtitle">Data Covid Berdasarkan Global</p>
-      <div className="container">{renderedCard}</div>
+      <Heading $fontSize={"62px"} $color={"primary"}>
+        {title || ""}
+      </Heading>
+      <Text $fontSize={"24px"} $color={"secondary"} $mb={"1.2rem"}>
+        Data Covid Berdasarkan Global
+      </Text>
+      <Flex
+        $justifyContent={"center"}
+        $alignItems={"center"}
+        $gap={"1.5rem"}
+        $flexWrap={"wrap"}
+      >
+        {renderedCard}
+      </Flex>
     </StyledSituation>
   );
 };

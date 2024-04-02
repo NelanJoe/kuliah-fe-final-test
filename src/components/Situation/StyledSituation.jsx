@@ -4,21 +4,11 @@ const StyledSituation = styled.div`
   margin: 5rem 0;
   padding: 10rem 2rem;
   background-color: #f8f9fa;
+  border-radius: 0.5rem;
 
   h1,
   p {
     text-align: center;
-  }
-
-  .title {
-    color: ${({ theme }) => theme.colors.primary};
-    font-size: 62px;
-  }
-
-  .subtitle {
-    color: ${({ theme }) => theme.colors.secondary};
-    font-size: 24px;
-    margin-bottom: 1.2rem;
   }
 
   .container {
